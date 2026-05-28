@@ -280,6 +280,10 @@ if(WIN32 OR (UNIX AND NOT APPLE))
     add_subdirectory(src/launcher)
 endif()
 
+if(WIN32 OR (UNIX AND NOT APPLE))
+    add_subdirectory(src/mcp_server)
+endif()
+
 if(QTPILOT_BUILD_TEST_APP)
     add_subdirectory(test_app)
     install(TARGETS qtPilot_test_app RUNTIME DESTINATION bin)
