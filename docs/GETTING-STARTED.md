@@ -28,17 +28,17 @@ The easiest way to get started is using the Python package:
 pip install qtpilot
 ```
 
-Then download the probe for your Qt version:
+Then download the tools for your Qt version:
 
 ```bash
-# Download probe matching your app's Qt version
-qtpilot download-probe --qt-version 6.8
+# Download probe + launcher matching your app's Qt version
+qtpilot download-tools --qt-version 6.8
 
 # Other available versions: 5.15, 6.5, 6.8, 6.9
-qtpilot download-probe --qt-version 5.15
+qtpilot download-tools --qt-version 5.15
 
-# Override the default compiler if needed (default: gcc13 on Linux, msvc17 on Windows)
-qtpilot download-probe --qt-version 6.8 --compiler gcc14
+# Extract to a specific directory
+qtpilot download-tools --qt-version 6.8 --output ./tools
 ```
 
 See [python/README.md](../python/README.md) for complete CLI documentation.

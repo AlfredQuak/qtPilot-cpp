@@ -27,10 +27,10 @@ Get-ChildItem "C:\path\to\app" | Where-Object { $_.Name -match "Qt.*\.dll" }
 **Download the correct probe:**
 ```bash
 # For Qt 6.8
-qtpilot download-probe --qt-version 6.8
+qtpilot download-tools --qt-version 6.8
 
 # For Qt 5.15
-qtpilot download-probe --qt-version 5.15-patched
+qtpilot download-tools --qt-version 5.15-patched
 ```
 
 #### Windows: DLL Not Found

@@ -150,6 +150,15 @@ def cmd_download_tools(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_download_probe(args: argparse.Namespace) -> int:
+    """Deprecated alias for download-tools."""
+    print(
+        "Warning: 'download-probe' is deprecated. Use 'download-tools' instead.",
+        file=sys.stderr,
+    )
+    return cmd_download_tools(args)
+
+
 def create_parser() -> argparse.ArgumentParser:
     """Create the argument parser with subcommands."""
     parser = argparse.ArgumentParser(
@@ -327,6 +336,44 @@ def create_parser() -> argparse.ArgumentParser:
         help="Target architecture (default: x64). Must match target app bitness.",
     )
     download_parser.set_defaults(func=cmd_download_tools)
+
+    # --- download-probe subcommand (deprecated alias) ---
+    download_probe_parser = subparsers.add_parser(
+        "download-probe",
+        help=argparse.SUPPRESS,
+        description="Deprecated alias for 'download-tools'.",
+    )
+    download_probe_parser.add_argument(
+        "--qt-version",
+        required=True,
+        metavar="VERSION",
+        help="Qt version to download tools for (e.g., 6.8, 5.15, 5.15-patched)",
+    )
+    download_probe_parser.add_argument(
+        "--output",
+        "-o",
+        default=None,
+        metavar="DIR",
+        help="Directory to extract tools into (default: current directory)",
+    )
+    download_probe_parser.add_argument(
+        "--no-verify",
+        action="store_true",
+        help="Skip SHA256 checksum verification (not recommended)",
+    )
+    download_probe_parser.add_argument(
+        "--release",
+        default="latest",
+        metavar="TAG",
+        help="Release tag to download from (default: latest)",
+    )
+    download_probe_parser.add_argument(
+        "--arch",
+        default=None,
+        choices=["x64", "x86"],
+        help="Target architecture (default: x64). Must match target app bitness.",
+    )
+    download_probe_parser.set_defaults(func=cmd_download_probe)
 
     return parser
 

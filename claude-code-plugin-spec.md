@@ -14,7 +14,7 @@ plugin/
 ├── commands/
 │   ├── connect.md
 │   ├── launch.md
-│   └── download-probe.md
+│   └── download-tools.md
 ├── skills/
 │   └── qt-automation/
 │       └── SKILL.md
@@ -101,15 +101,15 @@ Behavior:
 3. Wait for connection confirmation
 4. Report connected status and available tools
 
-### `/qtpilot:download-probe`
+### `/qtpilot:download-tools`
 
-**File:** `commands/download-probe.md`
+**File:** `commands/download-tools.md`
 
 Purpose: Download the pre-built probe binary for a specific Qt version.
 
 Behavior:
 1. Ask which Qt version (5.15, 6.5, 6.8, 6.9)
-2. Call `qtpilot download-probe --qt-version <version>`
+2. Call `qtpilot download-tools --qt-version <version>`
 3. Report download location
 
 ## 4. Skills
@@ -190,7 +190,7 @@ The repo root is already occupied by C++ source, Python package, tests, and docs
 Do not bundle pre-built binaries in the plugin. Reasons:
 - Probe binaries are platform-specific (Windows DLL vs Linux SO) and Qt-version-specific (5.15, 6.5, 6.8, 6.9) — bundling all combinations bloats the plugin
 - The download manager (`python/src/qtpilot/download.py`) already handles this with checksum verification
-- The `/qtpilot:download-probe` command and `qtpilot download-probe` CLI provide the user-facing interface
+- The `/qtpilot:download-tools` command and `qtpilot download-tools` CLI provide the user-facing interface
 - Binaries are cached locally after first download
 
 ### Use `uvx` as the default command
